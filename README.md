@@ -23,6 +23,16 @@ Using brew serivces to run the ELK stack:
 brew services list
 ```
 
+Use crontab to schedule the backup script:
+
+```
+crontab -e
+
+```
+```
+0 * * * * cd ~/Dev/climate/local && ./backup.sh
+```
+
 # On the Pi
 
 [Pi pins](https://pi4j.com/1.2/pins/model-a-rev2.html)
