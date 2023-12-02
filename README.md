@@ -17,6 +17,12 @@ We now need to pick up the synced log files and ingest them into elasticsearch. 
 brew install logstash-full kibana-full elasticsearch-full
 ```
 
+Using brew serivces to run the ELK stack:
+
+```
+brew services list
+```
+
 # On the Pi
 
 [Pi pins](https://pi4j.com/1.2/pins/model-a-rev2.html)
