@@ -75,3 +75,5 @@ I set up tmpfs for /var/log to reduce the number of writes made to the SD card. 
 ```
 tmpfs /var/log  tmpfs defaults,noatime,size=16m 0 0
 ```
+
+Then run `sudo mount -a` to load the new mount. Running `df -h` should show the new mount in place.
