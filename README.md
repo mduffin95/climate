@@ -37,3 +37,35 @@ DHT20 Pins to RPI pins
 4. SCL0 (Pi pin 5)
 
 
+### Timers
+
+To run the `main.py` script on a scheduled basis I've used a systemd timer and service. These can be found at `/etc/systemd/system`:
+
+- climate.service
+```
+[Unit]
+Description=Sends temp and humidity data to ELK stack
+Wants=climate.timer
+
+[Service]
+Type=oneshot
+ExecStart=/home/matt/climate.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- climate.timer
+```
+[Unit]
+Description=Logs climate metrics
+Requires=climate.service
+
+[Timer]
+Unit=climate.service
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target
+```
+
