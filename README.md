@@ -80,7 +80,7 @@ WantedBy=timers.target
 
 # Use `tmpfs` for `/var/log`
 
-I set up tmpfs for /var/log to reduce the number of writes made to the SD card. Hopefully this will increase its lifespan.
+I set up tmpfs for /var/log. This creates an in-memory drive and should help to reduce the number of writes made to the SD card. Hopefully this will increase its lifespan.
 ```
 tmpfs /var/log  tmpfs defaults,noatime,size=16m 0 0
 ```
