@@ -1,3 +1,12 @@
+# Indoor climate monitoring
+A simple system for monitoring temperature and humidity data from my flat. 
+
+The basic steps are as follows:
+- Use systemd to run a couple of python scripts every minute to collect indoor and outdoor temp/humidity data.
+- Log the results to `/var/log/climate` which is set up with a `tmpfs` mount.
+- On my mac, run a cron job to `rsync` the log files on a regular basis (currently every 5 minutes).
+- Use the ELK stack to consume, parse and index the log files and display pretty graphs.
+
 # On the Mac
 
 Create a bash script for syncing with RPI.
