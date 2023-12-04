@@ -1,2 +1,2 @@
 #!/bin/sh
-rsync -avz --remove-source-files matt@raspberrypi.local:/var/log/climate_* ~/Dev/climate/local/logs/
+rsync -avz --rsync-path="sudo rsync" --remove-source-files matt@raspberrypi.local:/var/log/climate_* ~/Dev/climate/local/logs/
