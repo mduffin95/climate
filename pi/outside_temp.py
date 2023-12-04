@@ -26,15 +26,25 @@ def scrape_temperature():
             div_module_content = temperature_div.find('div', class_='PWS_module_content')
 
             div_middle = div_module_content.find('div', class_='PWS_middle')
+            div_left = div_module_content.find('div', class_='PWS_left')
 
-
-            # temperature_div.
-            # Extract the temperature text
             temperature_text = div_middle.text.strip()
 
-            match = re.search("^[\d.]+", temperature_text)
+            left_text = div_left.text.strip()
+
+            humidity_pattern = re.compile('Humidity(\d+\.\d+)%')
+            match = humidity_pattern.search(left_text)
+            humidity = None
             if match:
-                return float(match.group())
+                humidity = match.group(1)
+
+            match = re.search("^[\d.]+", temperature_text)
+            temperature = None
+            if match:
+                temperature = float(match.group())
+
+            return temperature, humidity
+
         else:
             logger.error("Temperature element not found on the page.")
     else:
@@ -43,7 +53,7 @@ def scrape_temperature():
     return None
 
 if __name__ == "__main__":
-    temp = scrape_temperature()
+    temp, humidity = scrape_temperature()
     if temp:
-        logger.info("Reading taken", extra={ "temperature" : temp })
+        logger.info("Reading taken", extra={ "temperature" : temp, "humidity": humidity })
 
