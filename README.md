@@ -77,3 +77,6 @@ tmpfs /var/log  tmpfs defaults,noatime,size=16m 0 0
 ```
 
 Then run `sudo mount -a` to load the new mount. Running `df -h` should show the new mount in place.
+
+Following the approach mentioned [here](https://unix.stackexchange.com/questions/554788/mount-a-tmpfs-folder-on-startup-volatile-with-a-created-subfolder) 
+we create a directory within /var/log that is owned by a non-root user. This allows us to write logs without using sudo.
