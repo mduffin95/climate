@@ -80,9 +80,9 @@ WantedBy=timers.target
 
 # Use `tmpfs` for `/var/log`
 
-I set up tmpfs for /var/log. This creates an in-memory drive and should help to reduce the number of writes made to the SD card. Hopefully this will increase its lifespan.
+I set up tmpfs for /var/log/climate. This creates an in-memory drive and should help to reduce the number of writes made to the SD card. Hopefully this will increase its lifespan.
 ```
-tmpfs /var/log  tmpfs defaults,noatime,size=16m 0 0
+tmpfs /var/log/climate  tmpfs defaults,noatime,size=16m 0 0
 ```
 
 Then run `sudo mount -a` to load the new mount. Running `df -h` should show the new mount in place.
