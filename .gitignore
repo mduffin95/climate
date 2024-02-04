@@ -1,4 +1,5 @@
 .idea/
 logs/
+certs/
 *.log
 *.iml
